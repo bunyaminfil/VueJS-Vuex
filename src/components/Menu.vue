@@ -101,8 +101,9 @@
                     >Settings</a
                   >
                 </MenuItem>
-                <MenuItem v-slot="{ active }">
+                <MenuItem :class="logoutClass" v-slot="{ active }">
                   <a
+                    @click.prevent="logout"
                     href="#"
                     :class="[
                       active ? 'bg-gray-100' : '',
@@ -152,7 +153,7 @@ import {
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
+  { name: "Home", href: "/home", current: false },
   { name: "Admission", href: "/admission", current: false },
 ];
 
@@ -176,6 +177,18 @@ export default {
       navigation,
       open,
     };
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    },
+  },
+  computed: {
+    logoutClass() {
+      return {
+        "d-none": false,
+      };
+    },
   },
 };
 </script>
