@@ -3,7 +3,18 @@ import Login from "../views/Login.vue";
 import store from "../store/index";
 
 const routes = [
-  { path: "/", name: "Login", component: Login },
+  {
+    path: "/",
+    name: "Login",
+    component: Login,
+    beforeEnter: (to, from, next) => {
+      if (!store.getters.isAuthenticated) {
+        next();
+      } else {
+        next("/home");
+      }
+    },
+  },
   {
     path: "/home",
     name: "Home",
