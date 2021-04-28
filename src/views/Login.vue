@@ -2,7 +2,7 @@
   <div>
     <body>
       <div class="giris">
-        <div style="display:inline-block">
+        <div style="display: inline-block">
           <h2 class="text">Login</h2>
         </div>
 
@@ -25,9 +25,7 @@
               placeholder="Şifre"
             />
           </div>
-          <button id="postData" class="btn" type="submit">
-            Giriş Yap
-          </button>
+          <button id="postData" class="btn" type="submit">Giriş Yap</button>
         </form>
       </div>
     </body>
@@ -35,8 +33,6 @@
 </template>
 
 <script>
-// import axiosjs from "../config/axios";
-// import axios from "axios";
 export default {
   data() {
     return {
@@ -50,7 +46,6 @@ export default {
     logIn() {
       this.$store.dispatch("login", { ...this.user }).then((response) => {
         this.$router.push("/home");
-        console.log(response);
       });
     },
   },

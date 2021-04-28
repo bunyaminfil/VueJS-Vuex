@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import axios from "axios";
+import axiosjs from "../config/axios";
 import router from "../router/index";
 
 export default createStore({
@@ -25,15 +25,14 @@ export default createStore({
       }
     },
     login({ commit }, authData) {
-      return axios
-        .post("http://localhost:3000/users/signin", {
+      return axiosjs
+        .post("/users/signin", {
           email: authData.email,
           password: authData.password,
           returnSecureToken: true,
         })
         .then((response) => {
           let newToken = response.data.data.jwtoken;
-          console.log(newToken);
           commit("setToken", newToken);
           localStorage.setItem("token", newToken);
         });
