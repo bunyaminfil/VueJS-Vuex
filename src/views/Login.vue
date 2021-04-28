@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-body {
+/* body {
   margin: 0;
   padding: 0;
   display: flex;
@@ -62,7 +62,7 @@ body {
   height: 100vh;
   background: white;
   font-family: "Montserrat", sans-serif;
-}
+} */
 .giris {
   text-align: center;
   width: 600px;
@@ -71,7 +71,7 @@ body {
   background: white;
   font-family: "Montserrat";
   font-weight: 600px;
-  margin-left: 35%;
+  margin-left: 28%;
   margin-top: 13%;
 }
 .title {
