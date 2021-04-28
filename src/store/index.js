@@ -32,9 +32,14 @@ export default createStore({
           returnSecureToken: true,
         })
         .then((response) => {
-          let newToken = response.data.data.jwtoken;
-          commit("setToken", newToken);
-          localStorage.setItem("token", newToken);
+          const res = response.data;
+          if (res.status == "Success") {
+            let newToken = response.data.data.jwtoken;
+            commit("setToken", newToken);
+            localStorage.setItem("token", newToken);
+          } else if (res.status == "Error") {
+            alert(res.err);
+          }
         });
     },
     logout({ commit }) {
