@@ -33,13 +33,15 @@ export default createStore({
         })
         .then((response) => {
           const res = response.data;
-          if (res.status == "Success") {
-            let newToken = response.data.data.jwtoken;
+          if (res.status == "true") {
+            let newToken = response.data.data.access_token;
             commit("setToken", newToken);
             localStorage.setItem("token", newToken);
-          } else if (res.status == "Error") {
-            alert(res.err);
+            alert(res.message);
           }
+        })
+        .catch((error) => {
+          alert(error.response.data.message);
         });
     },
     logout({ commit }) {
